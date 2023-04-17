@@ -19,11 +19,8 @@ class ViewNote: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("tuta")
-        print(titleNote)
        if let safeTitle = titleNote, let safeBody = bodyNote{
-            print("___")
-            //print(safeTitle)
+ 
             titleTextField.text = safeTitle
             bodyTextView.text = safeBody
         }

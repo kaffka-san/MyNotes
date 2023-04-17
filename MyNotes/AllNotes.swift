@@ -22,13 +22,13 @@ class AllNotes: UITableViewController, newNoteWasEdded {
     
     var newNoteVC = NewNote()
     var notes: [NSManagedObject] = []
-    var titleNote : String?
-    var bodyNote  : String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         newNoteVC.delegate = self
         
-     
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +55,27 @@ class AllNotes: UITableViewController, newNoteWasEdded {
     }
     
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let appDelegate =
+           UIApplication.shared.delegate as? AppDelegate else {
+           return
+         }
+       
+        let context = appDelegate.persistentContainer.viewContext
+        if editingStyle == .delete {
+            context.delete(notes[indexPath.row])
+            notes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+            do{
+                try context.save()
+        
+            }catch {
+                print("error deleting note \(error)")
+            }
+           
+        }
+        tableView.reloadData()
+    }
     
     
     func addNote(note: NSManagedObject) {
@@ -91,20 +112,19 @@ class AllNotes: UITableViewController, newNoteWasEdded {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        let viewNoteVC = ViewNote()
-        titleNote = notes[indexPath.row].value(forKey: "title") as? String
-        bodyNote = notes[indexPath.row].value(forKey: "body") as? String
-  
-        print(notes[indexPath.row].value(forKey: "title"))
+
         self.performSegue(withIdentifier: "viewNoteSeg", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "viewNoteSeg"){
+            let indexPath = tableView.indexPathForSelectedRow
+            let index = indexPath?.row
+            let noteTtile = notes[index!].value(forKey: "title")
+            let noteBody = notes[index!].value(forKey: "body")
             let viewNoteVC = segue.destination as! ViewNote
-            viewNoteVC.titleNote = titleNote
-            viewNoteVC.bodyNote = bodyNote
+            viewNoteVC.titleNote = noteTtile as? String
+            viewNoteVC.bodyNote = noteBody as? String
         }
     }
     
