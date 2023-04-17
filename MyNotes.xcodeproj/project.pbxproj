@@ -15,7 +15,7 @@
 		306E9F6D29ED7C150007F585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306E9F6B29ED7C150007F585 /* LaunchScreen.storyboard */; };
 		306E9F7529ED7C950007F585 /* AllNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E9F7429ED7C950007F585 /* AllNotes.swift */; };
 		306E9F7729ED814D0007F585 /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E9F7629ED814D0007F585 /* NewNote.swift */; };
-		306E9F7929ED820C0007F585 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E9F7829ED820C0007F585 /* Note.swift */; };
+		306E9F7B29EDA2D20007F585 /* ViewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E9F7A29EDA2D20007F585 /* ViewNote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		306E9F6E29ED7C150007F585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		306E9F7429ED7C950007F585 /* AllNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotes.swift; sourceTree = "<group>"; };
 		306E9F7629ED814D0007F585 /* NewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNote.swift; sourceTree = "<group>"; };
-		306E9F7829ED820C0007F585 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		306E9F7A29EDA2D20007F585 /* ViewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 		306E9F5C29ED7C140007F585 /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
-				306E9F7829ED820C0007F585 /* Note.swift */,
+				306E9F7A29EDA2D20007F585 /* ViewNote.swift */,
 				306E9F7629ED814D0007F585 /* NewNote.swift */,
 				306E9F7429ED7C950007F585 /* AllNotes.swift */,
 				306E9F5D29ED7C140007F585 /* AppDelegate.swift */,
@@ -147,12 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				306E9F7B29EDA2D20007F585 /* ViewNote.swift in Sources */,
 				306E9F5E29ED7C140007F585 /* AppDelegate.swift in Sources */,
 				306E9F6029ED7C140007F585 /* SceneDelegate.swift in Sources */,
 				306E9F7729ED814D0007F585 /* NewNote.swift in Sources */,
 				306E9F6829ED7C140007F585 /* MyNotes.xcdatamodeld in Sources */,
 				306E9F7529ED7C950007F585 /* AllNotes.swift in Sources */,
-				306E9F7929ED820C0007F585 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,10 +51,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4DE-hI-TWI">
                             <color key="tintColor" systemColor="systemIndigoColor"/>
                             <connections>
+                                <action selector="addButtonPressed:" destination="FHF-hT-V0R" id="pdr-iS-e82"/>
                                 <segue destination="A4p-el-zLM" kind="show" id="BjM-cF-Clz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="WCM-8G-Qso" kind="show" identifier="viewNoteSeg" id="22m-mk-kW6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HH3-27-PSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +74,11 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVx-KP-lrh">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybf-qG-Vdt">
+                                <rect key="frame" x="10" y="10" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZA-Qp-Air">
@@ -107,14 +116,17 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Create">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                    <fontDescription key="titleFontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="24"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="A4p-el-zLM" eventType="touchUpInside" id="WQQ-xd-bXv"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r9h-hS-T5V">
                                 <rect key="frame" x="30" y="341" width="333" height="347"/>
@@ -150,10 +162,70 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cd1-jL-qNE"/>
+                    <connections>
+                        <outlet property="bodyTextField" destination="r9h-hS-T5V" id="E7C-La-98i"/>
+                        <outlet property="tittleTextField" destination="ikK-Wu-nNU" id="g1P-1R-gt6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmB-dG-zKP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.885496183206" y="-21.126760563380284"/>
+            <point key="canvasLocation" x="1960" y="-201"/>
+        </scene>
+        <!--View Note-->
+        <scene sceneID="tFN-11-lkr">
+            <objects>
+                <viewController id="WCM-8G-Qso" customClass="ViewNote" customModule="MyNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ha-IB-kDV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7X3-yz-Q0d">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwv-CD-ISS">
+                                <rect key="frame" x="30" y="155" width="333" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6w3-gI-64u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-1t-GZq">
+                                <rect key="frame" x="30" y="225" width="333" height="567"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fDe-ya-b0L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mwv-CD-ISS" firstAttribute="top" secondItem="fDe-ya-b0L" secondAttribute="top" id="79j-uk-ELr"/>
+                            <constraint firstItem="7X3-yz-Q0d" firstAttribute="leading" secondItem="fDe-ya-b0L" secondAttribute="leading" id="BM3-Zq-71m"/>
+                            <constraint firstItem="fDe-ya-b0L" firstAttribute="trailing" secondItem="mwv-CD-ISS" secondAttribute="trailing" constant="30" id="CSz-UL-CXU"/>
+                            <constraint firstItem="fDe-ya-b0L" firstAttribute="trailing" secondItem="HWh-1t-GZq" secondAttribute="trailing" constant="30" id="EWz-qS-Gjv"/>
+                            <constraint firstAttribute="bottom" secondItem="HWh-1t-GZq" secondAttribute="bottom" constant="60" id="IHQ-js-kP2"/>
+                            <constraint firstItem="HWh-1t-GZq" firstAttribute="leading" secondItem="fDe-ya-b0L" secondAttribute="leading" constant="30" id="Qte-K9-8fZ"/>
+                            <constraint firstItem="7X3-yz-Q0d" firstAttribute="top" secondItem="5Ha-IB-kDV" secondAttribute="top" id="Ttn-YO-BcN"/>
+                            <constraint firstAttribute="bottom" secondItem="7X3-yz-Q0d" secondAttribute="bottom" id="XYv-PU-BrW"/>
+                            <constraint firstItem="7X3-yz-Q0d" firstAttribute="trailing" secondItem="fDe-ya-b0L" secondAttribute="trailing" id="dmA-9J-B4m"/>
+                            <constraint firstItem="mwv-CD-ISS" firstAttribute="leading" secondItem="fDe-ya-b0L" secondAttribute="leading" constant="30" id="mFX-GH-kJT"/>
+                            <constraint firstItem="HWh-1t-GZq" firstAttribute="top" secondItem="mwv-CD-ISS" secondAttribute="bottom" constant="30" id="t1P-wB-4cO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vzT-Wp-Gga"/>
+                    <connections>
+                        <outlet property="bodyTextView" destination="HWh-1t-GZq" id="IDb-A1-FW4"/>
+                        <outlet property="titleTextField" destination="mwv-CD-ISS" id="fmu-hk-Esc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXl-Qp-rBx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1959.5419847328244" y="462.67605633802822"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vtv-fv-QQR">
@@ -165,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemIndigoColor"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemPurpleColor"/>
+                            <color key="textColor" systemColor="systemIndigoColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="40"/>
@@ -194,9 +266,6 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
